@@ -1,0 +1,131 @@
+
+.container{
+	background-color: #f6f6f6;
+}
+
+.unvisible{
+	display: none;
+}
+
+.unpublished{
+	border: 3px solid yellow;
+}
+
+.first{
+	margin-bottom:5%;
+}
+
+.conference-menu li{
+	display: inline-block;
+	list-style:none;
+}
+
+.conference-menu li img{
+	height:100%;
+}
+
+.name-conteiner{
+	padding:0px 5px;
+}
+
+.conference-name{
+	padding:13px 10px 24px 13px;
+	background-color: #006687;
+	margin: 5px;
+	color: #F6F6F6;
+	text-align: right;
+
+}
+
+.conference-name h1{
+	margin-top:8px;
+}
+
+div.contacts{
+	padding: 0;
+}
+div.name-conteiner{
+	padding:0px;
+}	
+
+.conference-det-2{
+	background-color: #002C3A;
+	margin: 5px;
+	padding: 20px 10px 10px 10px;
+}
+
+.conference-det-2 ul{
+	padding:0;
+	margin:10px;
+	margin-top:0;
+	margin-bottom:14px;
+}
+
+.conference-det-2 li{
+	list-style: none;
+	color: #F6F6F6;
+	font-size: 1em;
+}
+
+.pull-right{
+	text-align:right;
+	margin:10px;
+}
+
+.logo-img img{
+	height:130px;
+	margin: 10px 32.2%; 
+}
+.logo-img{
+	margin-left:-20px;
+}
+
+.main-content{
+	padding:15px;
+	margin:5px;
+}
+
+footer{
+	height: 100px;
+	position: relative;
+	background-color: #eeeeee;
+	border: 1px solid #ebebeb;
+}
+
+.logoes .col-lg-12 .logo img{
+	height: 40px;
+	width: 40px;
+	color: #4E627A;
+}
+
+.social-network li{
+	display: inline-block;
+	list-style: none;
+	margin: 10px;
+}
+
+.social-network {
+	padding: 20px 40px;
+}
+
+.social-network .soft {
+	position: relative;
+	left: 30%;
+}
+
+.logoes .col-sm-12 .logo img{
+	height: 45px;
+	width: 45px;
+}
+
+.logoes .col-sm-12 li{
+	margin: 4px;
+}
+
+.center-align{
+	text-align: center;
+}
+
+.login-button{
+	font-size: 4pt;
+}
