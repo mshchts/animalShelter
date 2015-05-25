@@ -1,0 +1,25 @@
+%h1 Listing animals
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Title
+      %th Content
+      %th
+      %th
+      %th
+      
+  %tbody
+    - @animals.each do |animal|
+      %tr
+        %td= animal.name
+        %td= animal.title
+        %td= animal.content
+        %td= link_to 'Show', animal
+        %td= link_to 'Edit', edit_animal_path(animal)
+        %td= link_to 'Destroy', animal, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Animal', new_animal_path

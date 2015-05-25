@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @animal.name
+%p
+  %b Title:
+  = @animal.title
+%p
+  %b Content:
+  = @animal.content
+
+= link_to 'Edit', edit_animal_path(@animal)
+\|
+= link_to 'Back', animals_path
