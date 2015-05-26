@@ -3,9 +3,8 @@
 %table
   %thead
     %tr
-      %th Name
       %th Title
-      %th Content
+      %th Text
       %th
       %th
       %th
@@ -13,9 +12,8 @@
   %tbody
     - @news.each do |news|
       %tr
-        %td= news.name
         %td= news.title
-        %td= news.content
+        %td= news.text
         %td= link_to 'Show', news
         %td= link_to 'Edit', edit_news_path(news)
         %td= link_to 'Destroy', news, :method => :delete, :data => { :confirm => 'Are you sure?' }

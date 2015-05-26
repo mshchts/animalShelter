@@ -1,14 +1,26 @@
 %p#notice= notice
 
 %p
+  %b Type:
+  = @animal.type
+%p
   %b Name:
   = @animal.name
 %p
-  %b Title:
-  = @animal.title
+  %b Sex:
+  = @animal.sex
 %p
-  %b Content:
-  = @animal.content
+  %b Size:
+  = @animal.size
+%p
+  %b Age:
+  = @animal.age
+%p
+  %b Sterile:
+  = @animal.sterile
+%p
+  %b Description:
+  = @animal.description
 
 = link_to 'Edit', edit_animal_path(@animal)
 \|

@@ -1,9 +1,13 @@
 class CreateAnimals < ActiveRecord::Migration
   def change
     create_table :animals do |t|
+      t.string :type
       t.string :name
-      t.string :title
-      t.text :content
+      t.string :sex
+      t.string :size
+      t.string :age
+      t.string :sterile
+      t.string :description
 
       t.timestamps null: false
     end

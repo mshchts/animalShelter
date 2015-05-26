@@ -1,11 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  type: 
   name: MyString
-  title: MyString
-  content: MyText
+  sex: MyString
+  size: MyString
+  age: MyString
+  sterile: MyString
+  description: MyString
 
 two:
+  type: 
   name: MyString
-  title: MyString
-  content: MyText
+  sex: MyString
+  size: MyString
+  age: MyString
+  sterile: MyString
+  description: MyString

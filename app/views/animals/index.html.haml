@@ -3,9 +3,13 @@
 %table
   %thead
     %tr
+      %th Type
       %th Name
-      %th Title
-      %th Content
+      %th Sex
+      %th Size
+      %th Age
+      %th Sterile
+      %th Description
       %th
       %th
       %th
@@ -13,9 +17,13 @@
   %tbody
     - @animals.each do |animal|
       %tr
+        %td= animal.type
         %td= animal.name
-        %td= animal.title
-        %td= animal.content
+        %td= animal.sex
+        %td= animal.size
+        %td= animal.age
+        %td= animal.sterile
+        %td= animal.description
         %td= link_to 'Show', animal
         %td= link_to 'Edit', edit_animal_path(animal)
         %td= link_to 'Destroy', animal, :method => :delete, :data => { :confirm => 'Are you sure?' }
