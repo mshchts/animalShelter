@@ -1,8 +1,16 @@
 Rails.application.routes.draw do
-  devise_for :admins
-  resources :animals
+  devise_for :admins, skip: :sessions
+    as :admin do
+    get 'login', to: 'devise/sessions#new', as: :new_admin_session
+    post 'login', to: 'devise/sessions#create', as: :admin_session
+    delete 'logout', to: 'devise/sessions#destroy', as: :destroy_admin_session
+  end
 
   resources :news
+  resources :animals
+  resources :contacts
+  resources :photos
+
 
   # You can have the root of your site routed with "root"
   root 'home#index'
@@ -58,4 +66,7 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+    get ':name', to: 'name#show'
+    get ':name/about', to: 'name#show', as: :about
+
 end

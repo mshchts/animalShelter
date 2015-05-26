@@ -1,4 +1,4 @@
-= form_for @animal do |f|
+= form_for @animal, html: {class: 'form-horizontal'} do |f|
   - if @animal.errors.any?
     #error_explanation
       %h2= "#{pluralize(@animal.errors.count, "error")} prohibited this animal from being saved:"
@@ -6,26 +6,36 @@
         - @animal.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
-    = f.label :type
-    = f.text_field :type
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :sex
-    = f.text_field :sex
-  .field
-    = f.label :size
-    = f.text_field :size
-  .field
-    = f.label :age
-    = f.text_field :age
-  .field
-    = f.label :sterile
-    = f.text_field :sterile
-  .field
-    = f.label :description
-    = f.text_field :description
+  .form-group
+    = f.label :type, "Type*", class: "col-lg-2 control-label"
+    .col-lg-7
+    = f.text_field :type, class: "form-control"
+  .form-group
+    = f.label :name, "Name*", class: "col-lg-2 control-label"
+    .col-lg-7
+    = f.text_field :name, class: "form-control"
+  .form-group
+    = f.label :sex, "Sex*", class: "col-lg-2 control-label"
+    .col-lg-7
+    = f.text_field :sex, class: "form-control"
+  .form-group
+    = f.label :age, class: "col-lg-2 control-label"
+    .col-lg-7
+    = f.number_field :age, class: "form-control"
+  .form-group
+    = f.label :size, class: "col-lg-2 control-label"
+    .col-lg-7
+    = f.text_field :size, class: "form-control"
+  .form-group
+    = f.label :sterile, class: "col-lg-2 col-md-1 col-sm-1 col-xs-1 control-label"
+    .col-lg-7.col-md-7.col-sm-7.col-xs-7
+    = f.check_box :sterile
+  .form-group
+    = f.label :description, "description*", class: "col-lg-2 control-label"
+    .col-lg-7
+      = f.text_field :description, class: "form-control"
   .actions
-    = f.submit 'Save'
+  .form-group
+    .col-lg-7.col-lg-offset-2
+      %button.btn.btn-default{:type => "reset"} Reset
+      = f.submit @button, class: "btn btn-primary"

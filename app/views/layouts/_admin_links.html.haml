@@ -4,9 +4,7 @@
       %button.navbar-toggle.collapsed{"data-target" => "#bs-example-navbar-collapse-2", "data-toggle" => "collapse", :type => "button"}
         %span.sr-only Toggle navigation
         %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
-      %a.navbar-brand{:href => "/#{Conference.last_conference_route}"} Pacemaker
+      %a.navbar-brand{:href => "/#{News.last_news_route}"} Pacemaker
     #bs-example-navbar-collapse-2.collapse.navbar-collapse
       %ul.nav.navbar-nav
         %li= link_to 'News', admin_news_types_path

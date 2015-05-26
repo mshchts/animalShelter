@@ -1,63 +1,42 @@
 .row
-  .col-lg-8.col-md-8.col-sm-7.col-xs-8
-    %div
-      - unless @conference.nil? || @conference.id.nil?
-        - buttons_class = get_active_button
-        %ul.nav.nav-pills{:id => "conference_nav_buttons>"}
-          %li#about_button{:class => "#{buttons_class[0]}"}= link_to "About", about_conference_path(@conference.route)
-          %li#speakers_button{:class => "#{buttons_class[1]}"}= link_to "Speakers", speakers_conference_path(@conference.route)
-          %li#schedule_button{:class => "#{buttons_class[2]}"}= link_to "Schedule", schedule_conference_path(@conference.route)
-          - unless(@conference.location.nil?)
-            %li#location_button{:class => "#{buttons_class[3]}"}= link_to "Location", location_conference_path(@conference.route)
-          - unless(@conference.report.nil?)
-            %li#report_button{:class => "#{buttons_class[4]}"}= link_to "Report", report_conference_path(@conference.route)
-    .blockquotes-container
-      %blockquote.pull-right
-        %h4
-          It takes all the running you can do, to keep in the same place.
-          %br>/
-          If you want to get somewhere else, you must run at least twice as fast as that!
-        %small Red Queen
-  .col-lg-4.col-md-4.col-sm-5.col-xs-4.logo-img
-    = image_tag("pacemaker_logo.png")
+  .col-lg-1.col-md-1.col-sm-1.col-xs-1
+  .col-lg-4.col-md-4.col-sm-4.col-xs-4
+    = image_tag("title.jpg")
+  .col-lg-6.col-md-6.col-sm-6.col-xs-6.logo-img
+    = image_tag("logo.jpg")
 %nav.navbar.navbar-default
   .container-fluid
     .navbar-header
       %button.navbar-toggle.collapsed{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
         %span.sr-only Toggle navigation
         %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
-      %a.navbar-brand{:href => "#"} Brand
+      %a.navbar-brand{:href => "#"} Притулок
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       %ul.nav.navbar-nav
         %li.active
           %a{:href => "#"}
-            Link
+            Новини
             %span.sr-only (current)
-        %li
-          %a{:href => "#"} Link
         %li.dropdown
           %a.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-            Dropdown
+            Тварини
             %span.caret
           %ul.dropdown-menu{:role => "menu"}
             %li
               %a{:href => "#"} Action
             %li
               %a{:href => "#"} Another action
-            %li
-              %a{:href => "#"} Something else here
             %li.divider
             %li
               %a{:href => "#"} Separated link
-            %li.divider
-            %li
-              %a{:href => "#"} One more separated link
-      %form.navbar-form.navbar-left{:role => "search"}
+      %ul.nav.navbar-nav
+        %li
+          %a{:href => "#"} Контакти
+        <!-- = link_to "News", news_path(@news) -->
+      %form.navbar-form.navbar-right{:role => "search"}
         .form-group
           %input.form-control{:placeholder => "Search", :type => "text"}/
-        %button.btn.btn-default{:type => "submit"} Submit
+        %button.btn.btn-default{:type => "submit"} Пошук
       %ul.nav.navbar-nav.navbar-right
         %li
-          %a{:href => "#"} Link
+          %a{:href => "#"} Про нас
