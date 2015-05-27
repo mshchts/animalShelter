@@ -1,12 +1,12 @@
 %p#notice= notice
 
 %p
-  %b Title:
+  %b
   = @news.title
 %p
-  %b Text:
+  %b
   = @news.text
 
-= link_to 'Edit', edit_news_path(@news)
+= link_to 'Редагувати', edit_news_path(@news)
 \|
-= link_to 'Back', news_index_path
+= link_to 'Назад', news_index_path

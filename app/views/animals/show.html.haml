@@ -1,27 +1,27 @@
 %p#notice= notice
 
 %p
-  %b Type:
+  %b Порода:
   = @animal.type
 %p
-  %b Name:
+  %b Ім'я:
   = @animal.name
 %p
-  %b Sex:
+  %b Стать:
   = @animal.sex
 %p
-  %b Size:
+  %b Розмір:
   = @animal.size
 %p
-  %b Age:
+  %b Вік:
   = @animal.age
 %p
-  %b Sterile:
+  %b Стерилізація:
   = @animal.sterile
 %p
-  %b Description:
+  %b Опис:
   = @animal.description
 
-= link_to 'Edit', edit_animal_path(@animal)
+= link_to 'Редагувати', edit_animal_path(@animal)
 \|
-= link_to 'Back', animals_path
+= link_to 'Назад', animals_path

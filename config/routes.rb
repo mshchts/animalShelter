@@ -8,7 +8,6 @@ Rails.application.routes.draw do
 
   resources :news
   resources :animals
-  resources :contacts
   resources :photos
 
 
@@ -66,7 +65,12 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-    get ':name', to: 'name#show'
-    get ':name/about', to: 'name#show', as: :about
+    get '/', to: 'home#index', as: 'home'
+
+    get '/contacts', to: 'contacts#index', as: 'contacts'
+
+    get '/animals' => 'animals#index', as: 'all_animals'
+    
+    get '/news', to: 'news#show', as: 'all_news'
 
 end

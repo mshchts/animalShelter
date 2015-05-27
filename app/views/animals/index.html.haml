@@ -1,33 +1,88 @@
-%h1 Listing animals
+.container
+  %h1 Забери друга з притулку
+  %p Великий вибір домашніх улюбленців.
+  %a{:href => "#"} Дізнайся більше
+.neighborhood-guides
+  .container
+    %h1 Новини
+    %p Заходить в притулок.
+    - if @animals.length > 0
+      - width = [9, 8]
+    - else
+      - width = [12, 12]
+    - content_for :title, @news
+    .row
+      %div{:class => "main-speakers col-lg-#{width[0]} col-md-#{width[1]} col-sm-12 col-xs-12"}
 
-%table
-  %thead
-    %tr
-      %th Type
-      %th Name
-      %th Sex
-      %th Size
-      %th Age
-      %th Sterile
-      %th Description
-      %th
-      %th
-      %th
-      
-  %tbody
-    - @animals.each do |animal|
-      %tr
-        %td= animal.type
-        %td= animal.name
-        %td= animal.sex
-        %td= animal.size
-        %td= animal.age
-        %td= animal.sterile
-        %td= animal.description
-        %td= link_to 'Show', animal
-        %td= link_to 'Edit', edit_animal_path(animal)
-        %td= link_to 'Destroy', animal, :method => :delete, :data => { :confirm => 'Are you sure?' }
+.nav
+  .container
+    %ul.pull-left
+      %li
+        %a{:href => "#"} News
+      %li
+        %a{:href => "#"} Browse
 
-%br
+    %br
 
-= link_to 'New Animal', new_animal_path
+    %h1 Огляд тварин
+
+    %table
+      %thead
+        %tr
+          %th Type
+          %th Name
+          %th Sex
+          %th Size
+          %th Age
+          %th Sterile
+          %th Description
+          %th
+          %th
+          %th
+          
+      %tbody
+        - @animals.each do |animal|
+          %tr
+            %td= animal.type
+            %td= animal.name
+            %td= animal.sex
+            %td= animal.size
+            %td= animal.age
+            %td= animal.sterile
+            %td= animal.description
+            %td= link_to 'Show', animal
+            %td= link_to 'Edit', edit_animal_path(animal)
+            %td= link_to 'Destroy', animal, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+    %br
+    = link_to 'Додати тварину', new_animal_path
+
+.col-md-4
+  .thumbnail
+    %img{:src => "https://cbsnewyork.files.wordpress.com/2012/03/71524176.jpg?w=620&h=349&crop=1"}/
+    %h3 Кіт
+    %p Поглянь який чудовий котик чекає на свого господаря.
+    %p
+      %a{:href => "#"} Читати далі 
+  .thumbnail
+    %img{:src => "http://davisenterprise.s3.amazonaws.com/files/2011/06/Cats2W.jpg"}/
+    %h3 Кіт
+    %p Поглянь, який чудовий котик чекає на свого господаря.
+    %p
+      %a{:href => "#"} Читати далі
+.col-md-4
+  .thumbnail
+    %img{:src => "http://www.heardcitizen.com/wp-content/uploads/2012/10/ul_animal_shelter_cat+Z.jpg"}/
+    %h3 Кіт
+    %p Поглянь який чудовий котик чекає на свого господаря.
+    %p
+      %a{:href => "#"} Читати далі
+  .thumbnail
+    %img{:src => "http://www.examiner.com/images/blog/EXID15696/images/North-Royalton-Ohio-Cat-Shelter-Stay-A-While.jpg"}/
+    %h3 Кіт
+    %p Поглянь який чудовий котик чекає на свого господаря.
+    %p
+      %a{:href => "#"} Читати далі
+.col-md-4
+  .thumbnail
+    %img{:src => "http://www.catster.com/files/vol-shelter-shelter-cat.jpg"}/

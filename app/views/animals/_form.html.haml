@@ -7,35 +7,35 @@
           %li= msg
 
   .form-group
-    = f.label :type, "Type*", class: "col-lg-2 control-label"
-    .col-lg-7
-    = f.text_field :type, class: "form-control"
+    = f.label "Порода*", class: "col-lg-2 control-label"
+    .col-lg-5
+      = f.text_field :type, class: "form-control"
   .form-group
-    = f.label :name, "Name*", class: "col-lg-2 control-label"
-    .col-lg-7
-    = f.text_field :name, class: "form-control"
+    = f.label "Ім’я", class: "col-lg-2 control-label"
+    .col-lg-5
+      = f.text_field :name, class: "form-control"
   .form-group
-    = f.label :sex, "Sex*", class: "col-lg-2 control-label"
-    .col-lg-7
-    = f.text_field :sex, class: "form-control"
+    = f.label "Стать*", class: "col-lg-2 control-label"
+    .col-lg-5
+      = f.select :sex, [['Будь-яка', "any"],['Самець', "male"],['Самка','female']], {:selected=> 'any'}, class: "col-lg-5 form-control"
   .form-group
-    = f.label :age, class: "col-lg-2 control-label"
-    .col-lg-7
-    = f.number_field :age, class: "form-control"
+    = f.label "Вік", class: "col-lg-2 control-label"
+    .col-lg-5
+      = f.select :age, [['Будь-який', "any"],['Малюк','baby'],['Молодий', 'young'],['Дорослий','adult'],['Стара','old']], {:selected=> 'any'}, class: "col-lg-5 form-control"
   .form-group
-    = f.label :size, class: "col-lg-2 control-label"
-    .col-lg-7
-    = f.text_field :size, class: "form-control"
+    = f.label "Розмір", class: "col-lg-2 control-label"
+    .col-lg-5
+      = f.select :size, [['Будь-який', 'any'],['Мала', 'small'],['Середня','medium'],['Велика','big']], {:selected=> 'any'}, class: "col-lg-5 form-control"
   .form-group
-    = f.label :sterile, class: "col-lg-2 col-md-1 col-sm-1 col-xs-1 control-label"
-    .col-lg-7.col-md-7.col-sm-7.col-xs-7
-    = f.check_box :sterile
+    = f.label "Стерилізація", class: "col-lg-2 col-md-1 col-sm-1 col-xs-1 control-label"
+    .col-lg-5.col-md-5.col-sm-5.col-xs-5
+      = f.check_box :sterile
   .form-group
-    = f.label :description, "description*", class: "col-lg-2 control-label"
-    .col-lg-7
-      = f.text_field :description, class: "form-control"
+    = f.label "Опис", class: "col-lg-2 control-label"
+    .col-lg-5
+      = f.text_area :description, class: "form-control", :rows => "3"
   .actions
   .form-group
-    .col-lg-7.col-lg-offset-2
-      %button.btn.btn-default{:type => "reset"} Reset
+    .col-lg-5.col-lg-offset-2
+      %button.btn.btn-default{:type => "reset"} Стерти
       = f.submit @button, class: "btn btn-primary"

@@ -10,33 +10,36 @@
       %button.navbar-toggle.collapsed{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
         %span.sr-only Toggle navigation
         %span.icon-bar
-      %a.navbar-brand{:href => "#"} Притулок
-    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+        %span.icon-bar
+      %ul.nav.navbar-brand
+        %li
+        = link_to "Притулок", home_path
       %ul.nav.navbar-nav
         %li.active
-          %a{:href => "#"}
-            Новини
-            %span.sr-only (current)
+          = link_to "Новини", all_news_path
+        %span.sr-only (current)
+        %li
+          = link_to "Волонтерство", all_animals_path
         %li.dropdown
-          %a.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-            Тварини
+          %a.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :role => "button"}
+            trter
             %span.caret
           %ul.dropdown-menu{:role => "menu"}
             %li
-              %a{:href => "#"} Action
+              = link_to "Собаки", all_animals_path
             %li
-              %a{:href => "#"} Another action
+              = link_to "Коти", all_animals_path
+            %li
+              = link_to "Інші", all_animals_path
             %li.divider
             %li
               %a{:href => "#"} Separated link
-      %ul.nav.navbar-nav
         %li
-          %a{:href => "#"} Контакти
-        <!-- = link_to "News", news_path(@news) -->
+          = link_to "Контакти", contacts_path
+        %li
+          = link_to "Про нас", contacts_path
+
       %form.navbar-form.navbar-right{:role => "search"}
         .form-group
           %input.form-control{:placeholder => "Search", :type => "text"}/
-        %button.btn.btn-default{:type => "submit"} Пошук
-      %ul.nav.navbar-nav.navbar-right
-        %li
-          %a{:href => "#"} Про нас
+          %button.btn.btn-default{:type => "submit"} Пошук

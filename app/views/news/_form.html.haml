@@ -1,16 +1,15 @@
-= form_for @news do |f|
-  - if @news.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@news.errors.count, "error")} prohibited this news from being saved:"
-      %ul
-        - @news.errors.full_messages.each do |msg|
-          %li= msg
+= form_for @news, html: {class: 'form-horizontal'} do |f|
 
-  .field
-    = f.label :title
-    = f.text_field :title
-  .field
-    = f.label :text
-    = f.text_field :text
+  .form-group
+    = f.label :title, class: "col-lg-2 control-label"
+    .col-lg-5
+      = f.text_field :title, class: "col-lg-5 form-control"
+  .form-group
+    = f.label :text, class: "col-lg-2 control-label"
+    .col-lg-5
+      = f.text_area :text, :rows => "3", class: "col-lg-5 form-control"
   .actions
-    = f.submit 'Save'
+    .form-group
+      .col-lg-10.col-lg-offset-2
+        = f.button 'Стерти', class: "btn btn-default"
+        = f.submit 'Зберегти', class: "btn btn-primary"
