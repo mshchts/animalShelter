@@ -1,5 +1,6 @@
 %footer.row.logoes
-  %ul.social-network.col-lg-12.col-md-12.col-sm-12
+  %ul.social-network.col-lg-3.col-md-3.col-sm-3
+  %ul.social-network.col-lg-6.col-md-6.col-sm-6
     %li.logo.fb
       %a{:href => "//www.facebook.com/Shelter?fref=ts"}
         = image_tag("facebook-footer.svg")
@@ -10,3 +11,11 @@
       %p
         © Shelter, #{Time.now.year}
   #admin_nav
+    - if admin_signed_in?
+      Logged in as
+      = succeed "." do
+        %strong
+          = current_admin.username
+      = link_to "Go to admin part", admin_animals_path
+      |
+      \#{link_to "Logout", destroy_admin_session_path, method: :delete}

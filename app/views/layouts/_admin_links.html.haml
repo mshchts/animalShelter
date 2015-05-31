@@ -4,17 +4,32 @@
       %button.navbar-toggle.collapsed{"data-target" => "#bs-example-navbar-collapse-2", "data-toggle" => "collapse", :type => "button"}
         %span.sr-only Toggle navigation
         %span.icon-bar
-      %a.navbar-brand{:href => "/#{News.last_news_route}"} Pacemaker
+      %a.navbar-brand Притулок
     #bs-example-navbar-collapse-2.collapse.navbar-collapse
       %ul.nav.navbar-nav
-        %li= link_to 'News', admin_news_types_path
+        %li= link_to 'News'
         %li= link_to 'Animals', admin_animals_path
         %li= link_to 'Contacts', admin_contacts_path
       %ul.nav.navbar-nav.navbar-right
-        %li= link_to 'About', page_path('about')
-        %li= link_to 'Authors', page_path('authors')
+        %li= link_to 'About'
         %li
           - if admin_signed_in?
             = link_to "#{current_admin.username} | Logout", destroy_admin_session_path, method: :delete
           - else
             = link_to "Login", new_admin_session_path
+
+  .bs-example
+  %form.form-inline
+    .row
+      .col-xs-4
+        .input-group
+          %span.input-group-addon
+            %span.glyphicon.glyphicon-user
+          %input.form-control{:placeholder => "Username", :type => "text"}/
+      .col-xs-4
+        .input-group
+          %span.input-group-addon
+            %span.glyphicon.glyphicon-lock
+          %input.form-control{:placeholder => "Password", :type => "password"}/
+      .col-xs-4
+        %button.btn.btn-primary{:type => "submit"} Login

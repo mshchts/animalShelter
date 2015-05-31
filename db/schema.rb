@@ -26,13 +26,15 @@ ActiveRecord::Schema.define(version: 20150526122846) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "username",               default: "", null: false
   end
 
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  add_index "admins", ["username"], name: "index_admins_on_username", unique: true
 
   create_table "animals", force: :cascade do |t|
-    t.string   "type"
+    t.string   "animal_type"
     t.string   "name"
     t.string   "sex"
     t.string   "size"

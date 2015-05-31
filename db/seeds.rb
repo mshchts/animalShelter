@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 Admin.create!([
-  {email: "admin@example.com", password: '00000000', password_confirmation: '00000000'}
+  {email: "admin@example.com", username: "admin", password: '00000000', password_confirmation: '00000000'}
 ])
 News.create!([
   {title: "best conference ever", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce commodo consectetur pretium. Vivamus rutrum viverra tortor quis blandit. Integer interdum urna sit amet eros maximus, quis tempor dolor tempus. Phasellus pharetra quis urna quis volutpat. Donec mauris massa, rutrum et suscipit sed, sagittis non nisi. Ut ac vulputate lectus. Proin turpis risus, lobortis et risus eu, fringilla dictum sapien. Integer ligula nisl, pulvinar sit amet rhoncus et, elementum et lacus. Aliquam id fringilla metus, ut placerat mi. Curabitur dignissim ligula vitae tempus imperdiet. Sed sit amet dolor vel velit ultrices pretium ut quis elit.
@@ -15,4 +15,4 @@ News.create!([
   Curabitur porttitor faucibus eros eget euismod. Sed efficitur aliquam ante. Etiam volutpat non turpis at bibendum. Quisque suscipit cursus accumsan. In non maximus ex, eu porta risus. Proin tincidunt pellentesque auctor. Etiam a metus nec ante tincidunt eleifend. Cras porta vitae augue ullamcorper bibendum. Proin quis laoreet erat. Duis iaculis venenatis nisi vel hendrerit. Curabitur ac hendrerit augue.
   Phasellus luctus scelerisque euismod. Praesent blandit tempor est id faucibus. Fusce varius porta erat non dictum. Maecenas nec molestie nunc, at iaculis ex. Pellentesque id risus lacus. Proin tincidunt metus a vulputate bibendum. Phasellus vitae pellentesque orci. Aenean pharetra sem purus, at placerat augue placerat sed. Phasellus eu lobortis metus. Nulla in ipsum magna."}
 ])
-Animals.create!([type: "Собака", name: "Нийко", sex: "мачо", size: "середній", age: "11", sterile: "деколи", description: "ходить і ниє"])
+Animal.create!([animal_type: "Собака", name: "Нийко", sex: "мачо", size: "середній", age: "11", sterile: "деколи", description: "ходить і ниє"])

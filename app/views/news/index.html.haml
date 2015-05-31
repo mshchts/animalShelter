@@ -1,84 +1,99 @@
-.jumbotron
-  .container
-    %h1 Візьми друга з притулку
-    %p Великий вибір домашніх улюбленців.
-    %a{:href => "#"} Дізнайся більше
-.neighborhood-guides
-  .container
-    %h1 Новини
-    %p Заходить в притулок.
-    - if @news.length > 0
-      - width = [9, 8]
-    - else
-      - width = [12, 12]
-    - content_for :title, @news
+.container
+  .jumbotron
+    .container
+      %h1 Візьми друга з притулку
+      %p Великий вибір домашніх улюбленців.
+      %a{:href => "#"} Дізнайся більше
+  .neighborhood-guides
+    .container
+      %h1 Новини
+      %p Заходить в притулок.
+      - if @news.length > 0
+        - width = [9, 8]
+      - else
+        - width = [12, 12]
+      - content_for :title, @news
 
-    = link_to 'Додати новину', new_news_path
+      = link_to 'Додати новину', new_news_path
 
-    %table
-      %thead
-        %tr
-          %th Заголовок
-          %th Опис
-          %th
-          %th
-          %th
-          
-      %tbody
-        - @news.each do |news|
+      %table.table.table-striped.table-hover
+        %thead
           %tr
-            %td= news.title
-            %td= news.text
-            %td= link_to 'Показати', news
-            %td= link_to 'Редагувати', edit_news_path(news)
-            %td= link_to 'Видалити', news, :method => :delete, :data => { :confirm => 'Are you sure?' }
+            %th Заголовок
+            %th Опис
+            %th
+            %th
+            %th
+            
+        %tbody
+          - @news.each do |news|
+            %tr
+              %td= news.title
+              %td= news.text
+              %td.btn= link_to 'Показати', news
+              %td.btn= link_to 'Редагувати', edit_news_path(news)
+              %td.btn= link_to 'Видалити', news, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-    %br
+      %br
 
-    .col-md-4
-      .thumbnail
-        %img{:src => "http://www.savingpets.com.au/wp-content/uploads/Kitten_cage.jpg"}/
-        %h3 Нові домівки у притулку
-        %p Привезено нові деревяні буди для тварин
-        %p
-          %a{:href => "#"} Читати далі 
-      .thumbnail
-        %img{:src => "http://media.lehighvalleylive.com/today_impact/photo/shelter-cats-ac620b2a67cf9c10.jpg"}/
-        %h3 Нові домівки у притулку
-        %p Привезено нові деревяні буди для тварин
-        %p
-          %a{:href => "#"} Читати далі
-    .col-md-4
-      .thumbnail
-        %img{:src => "http://4.bp.blogspot.com/_xVtD6O5U0s0/TFlzwBZosnI/AAAAAAAAArw/8SNiu30yIjo/s1600/DELTA+sanctuary.gif"}/
-        %h3 Нові домівки у притулку
-        %p Привезено нові деревяні буди для тварин
-        %p
-          %a{:href => "#"} Читати далі
-      .thumbnail
-        %img{:src => "http://theplanetd.com/images/animal-rescue-10.jpg"}/
-        %h3 Нові домівки у притулку
-        %p Привезено нові деревяні буди для тварин
-        %p
-          %a{:href => "#"} Читати далі          
-    .col-md-4
-      .thumbnail
-        %img{:src => "https://images.indiegogo.com/file_attachments/708657/files/20140710125755-IMG_1361-kitty-condo.jpg?1405022275"}/
-.learn-more
-  .container
     .row
+      .col-sm-6.col-md-4.col-lg-3.clearfix.visible-sm-block
+        .thumbnail
+          %img{:src => "http://www.savingpets.com.au/wp-content/uploads/Kitten_cage.jpg"}/
+          .caption
+          %h3 Нові домівки у притулку
+          %p Привезено нові деревяні буди для тварин
+          %p
+            %a{:href => "#"} Читати далі 
+        .thumbnail
+          %img{:src => "http://media.lehighvalleylive.com/today_impact/photo/shelter-cats-ac620b2a67cf9c10.jpg"}/
+          .caption
+          %h3 Нові дітки притулку
+          %p Привезено нові деревяні буди для тварин
+          %p
+            %a{:href => "#"} Читати далі
+      .col-sm-6.col-md-4
+        .thumbnail
+          %img{:src => "http://4.bp.blogspot.com/_xVtD6O5U0s0/TFlzwBZosnI/AAAAAAAAArw/8SNiu30yIjo/s1600/DELTA+sanctuary.gif"}/
+          .caption
+          %h3 Нові домівки у притулку
+          %p Привезено нові деревяні буди для тварин
+          %p
+            %a{:href => "#"} Читати далі
+        .thumbnail
+          %img{:src => "http://theplanetd.com/images/animal-rescue-10.jpg"}/
+          .caption
+          %h3 Нові домівки у притулку
+          %p Привезено нові деревяні буди для тварин
+          %p
+            %a{:href => "#"} Читати далі          
       .col-md-4
-        %h3 КУПИТИ ЇЖІ
-        %p Багато їжі.
-        %p
-          %a{:href => "#"} Подивитись
-      .col-md-4
-        %h3 Стерилізація
-        %p Стерильні тварини.
-        %p
-          %a{:href => "#"} Подивитись
-      .col-md-4
-        %h3 БЕЗПЕКА
-        %p Дбаємо про безпеки тварин разом.
-        %p
-          %a{:href => "#"} Подивитись
+        .thumbnail
+          %img{:src => "https://images.indiegogo.com/file_attachments/708657/files/20140710125755-IMG_1361-kitty-condo.jpg?1405022275"}/
+  .learn-more
+    .container
+      .row
+        .col-md-4
+          %h3 КУПИТИ ЇЖІ
+          %p Багато їжі.
+          %p
+            %a{:href => "#"} Подивитись
+        .col-md-4
+          %h3 Стерилізація
+          %p Стерильні тварини.
+          %p
+            %a{:href => "#"} Подивитись
+        .col-md-4
+          %h3 БЕЗПЕКА
+          %p Дбаємо про безпеки тварин разом.
+          %p
+            %a{:href => "#"} Подивитись
+
+
+        .media
+          .media-left.media-middle
+            %a{:href => "#"}
+              %img.media-object{:alt => "...", :src => "..."}/
+          .media-body
+            %h4.media-heading Middle aligned media
+            \...

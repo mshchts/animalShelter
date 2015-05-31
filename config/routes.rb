@@ -6,13 +6,18 @@ Rails.application.routes.draw do
     delete 'logout', to: 'devise/sessions#destroy', as: :destroy_admin_session
   end
 
+  namespace :admin do
+    root 'home#index'
+    resources :news
+    resources :home
+    resources :animals
+    resources :contacts
+  end
+
   resources :news
   resources :animals
-  resources :photos
-
 
   # You can have the root of your site routed with "root"
-  root 'home#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -66,7 +71,7 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
     get '/', to: 'home#index', as: 'home'
-
+    get 'admin' => 'admin#home'
     get '/contacts', to: 'contacts#index', as: 'contacts'
 
     get '/animals' => 'animals#index', as: 'all_animals'

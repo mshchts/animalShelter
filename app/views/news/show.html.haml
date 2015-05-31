@@ -1,11 +1,12 @@
-%p#notice= notice
+.container
+	.panel.panel-default.col-xs-4
+		.panel-heading 
+			= @news.title
+		.panel-body
+			= @news.text
+			.embed-responsive.col-xs-4
+			%iframe.embed-responsive-item{:src => "https://www.youtube.com/embed/fN4_C9rUw4k"}
 
-%p
-  %b
-  = @news.title
-%p
-  %b
-  = @news.text
 
 = link_to 'Редагувати', edit_news_path(@news)
 \|
