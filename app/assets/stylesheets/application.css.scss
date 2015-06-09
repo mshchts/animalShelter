@@ -12,6 +12,11 @@
  *
  *= require_tree .
  *= require_self
- *= require bootstrap
+ *= require dataTables.bootstrap
  *= require jquery.dataTables.min.css
+ *= require bootstrap-datetimepicker
  */
+ 
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "jquery.dataTables.min.css";

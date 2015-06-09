@@ -1,6 +1,7 @@
-$(document).on('ready page:load', tableLoad);
+$(document).on('ready page:load', pageLoad);
 
-function tableLoad() {
+function pageLoad() {
+    //datatable
     if ($('.data_table')) {
         $('.data_table').dataTable({
             paging: true,
@@ -15,4 +16,10 @@ function tableLoad() {
             }]
         });
     }
+    // data picker
+    if ($('.datetimepicker')) {
+        $('.datetimepicker').datetimepicker({
+            format: 'YYYY/MM/DD hh:mm'
+        });
+    };
 }

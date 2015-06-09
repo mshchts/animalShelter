@@ -5,7 +5,7 @@
       %a{:href => "//www.facebook.com/Shelter?fref=ts"}
         = image_tag("facebook-footer.svg")
     %li.logo.lind
-      %a{:href => "//www.linkedin.com/company/softserve?trk=prof-following-company-logo", :target => "_blank"}
+      %a{:href => "//www.linkedin.com/", :target => "_blank"}
         = image_tag("linkedin-footer.svg")
     %li.soft
       %p
@@ -16,6 +16,6 @@
       = succeed "." do
         %strong
           = current_admin.username
-      = link_to "Go to admin part", admin_animals_path
+      = link_to "Адмін. частина", admin_animals_path
       |
-      \#{link_to "Logout", destroy_admin_session_path, method: :delete}
+      = link_to "Вийти", destroy_admin_session_path, method: :delete

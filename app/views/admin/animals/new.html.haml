@@ -1,5 +1,16 @@
-%h1.container Додати тварину
+- if @animal.errors.any?
+  %h2= "#{pluralize(@animal.errors.count, "error")} prohibited this animal from being saved:"
+  .alert.alert-dismissible.alert-danger
+    %button.close{"data-dismiss" => "alert", :type => "button"} ×
+    %strong Помилка!
+    %ul
+      - @conference.errors.full_messages.each do |message|
+        %li= message
 
-= render 'form'
+%fieldset.col-lg-8
+  %legend Додати тварину
+  = render 'form'
 
+= link_to 'Показати', @animal
+\|
 = link_to 'Назад', animals_path

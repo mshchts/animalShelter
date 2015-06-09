@@ -1,89 +1,59 @@
 .container
-  %ul#myTab.nav.nav-tabs
-    %li.active
-      %a{"data-toggle" => "tab", :href => "#tab1"} Собаки
-    %li
-      %a{"data-toggle" => "tab", :href => "#tab2"} Коти
-    %li.dropdown
-      %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-        Інші
-        %b.caret
-      %ul#dropown.dropdown-menu{:role => "menu"}
-        %li{"data-toggle" => "tab", :href => "#tab3"}
-          %a{"data-toggle" => "tab", :href => "#home"} Чупакабра
-        %li{"data-toggle" => "tab", :href => "#tab4"}
-          = link_to "Коні", all_animals_path
-        %li{"data-toggle" => "tab", :href => "#tab5"}
-          %a{:href => "#"} Корови
-        %li{"data-toggle" => "tab", :href => "#tab6"}
-          %a{:href => "#"} Кролі
-      %br/
+  %h2 Огляд тварин
+  = render "layouts/search_box"
+  = link_to 'Додати тварину', new_admin_animal_path
 
-  .tab-content
-    #tab1.tab-pane.active bbbbbbbbbbbb
-    #tab2.tab-pane.col-md-4 rrrr
-    #tab3.tab-pane Наступне вікно з Собаками
-    #tab4.tab-pane
-      %form{"data-toggle" => "tab", :href => "#home"} Чупакабра
-
-    %h2 Огляд тварин
-    %br
-    = link_to 'Додати тварину', new_animal_path
-
-  %table.data_table
+  %table#animals.data_table.cell-border
     %thead
       %tr
-        %th Порода
-        %th Ім'я
-        %th Стать
-        %th Розмір
-        %th Вік
-        %th Стерилізація
+        %th= sort_link(@q, :name, "Ім'я")
+        %th= sort_link(@q, :animal_type, "Порода")
+        %th= sort_link(@q, :sex, "Стать")
+        %th= sort_link(@q, :size, "Розмір")
+        %th= sort_link(@q, :age, "Вік")
+        %th= sort_link(@q, :sterile, "Стерилізація")
         %th Опис
+        %th Фото
         %th
         %th
         %th
-        
     %tbody
       - @animals.each do |animal|
         %tr
+          %td= link_to(animal.name, animal)
           %td= animal.animal_type
-          %td= animal.name
           %td= animal.sex
           %td= animal.size
           %td= animal.age
           %td= animal.sterile
           %td= animal.description
-          %td.btn.btn-xs.btn-primary= link_to 'Показати', animal
-          %td.btn.btn-xs.btn-warning= link_to 'Редагувати', edit_animal_path(animal)
-          %td.btn.btn-xs.btn-danger= link_to 'Видалити', animal, :method => :delete, :data => { :confirm => 'Ви впевнені?' }
+          %td= image_tag (animal.photo.url(:thumb)) unless animal.photo.nil?
+          %td= link_to 'Показати', animal, class: "btn btn-xs btn-primary"
+          %td= link_to 'Редагувати', edit_admin_animal_path(animal), class: "btn btn-xs btn-warning"
+          %td= link_to 'Видалити', animal, :method => :delete, :data => { :confirm => 'Ви впевнені?' }, class: "btn btn-xs btn-danger"
 
-  .col-md-4
-    .thumbnail
-      %img{:src => "https://cbsnewyork.files.wordpress.com/2012/03/71524176.jpg?w=620&h=349&crop=1"}/
-      %h3 Кіт
-      %p Поглянь який чудовий котик чекає на свого господаря.
-      %p
-        %a{:href => "#"} Читати далі 
-    .thumbnail
-      %img{:src => "http://davisenterprise.s3.amazonaws.com/files/2011/06/Cats2W.jpg"}/
-      %h3 Кіт
-      %p Поглянь, який чудовий котик чекає на свого господаря.
-      %p
-        %a{:href => "#"} Читати далі
-  .col-md-4
-    .thumbnail
-      %img{:src => "http://www.heardcitizen.com/wp-content/uploads/2012/10/ul_animal_shelter_cat+Z.jpg"}/
-      %h3 Кіт
-      %p Поглянь який чудовий котик чекає на свого господаря.
-      %p
-        %a{:href => "#"} Читати далі
-    .thumbnail
-      %img{:src => "http://www.examiner.com/images/blog/EXID15696/images/North-Royalton-Ohio-Cat-Shelter-Stay-A-While.jpg"}/
-      %h3 Кіт
-      %p Поглянь який чудовий котик чекає на свого господаря.
-      %p
-        %a{:href => "#"} Читати далі
-  .col-md-4
-    .thumbnail
-      %img{:src => "http://www.catster.com/files/vol-shelter-shelter-cat.jpg"}/
+
+  / = search_form_for @q, url: search_admin_animals_path,
+  /                       html: { method: :post } do |f|
+  /   = f.condition_fields do |c|
+  /     = render "condition_fields", f: c
+  /   %p= link_to_add_fields "Add Conditions", f, :condition
+  /   .field
+  /     Sort:
+  /     = f.label :name, "Name"
+  /     = f.sort_fields do |s|
+  /       = s.sort_select
+  /   .large-4.small-3.columns
+  /   .actions= f.submit "Search"
+
+  / %table#animals
+  /   %tr
+  /     %th= sort_link @q, :name, "Name"
+  /     %th= sort_link @q, :age, "Age"
+  /     %th= sort_link @q, :size, "Size"
+  /   - @animals.each do |animal|
+  /     %tr
+  /       %td= link_to(animal.name, animal)
+  /       %td= animal.released_on.strftime("%B %e, %Y")
+  /       %td= number_to_currency(animal.price)
+

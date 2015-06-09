@@ -1,0 +1,35 @@
+.container
+  = search_form_for @q, :url => search_animals_path, :html => {:method => :post} do |f|
+    .field
+    = f.label "Ім\'я"
+    = f.search_field :name
+    = f.label "Порода"
+    = f.collection_select(:animal_type, Animal.all, :id, :animal_type, include_blank: true)
+    = f.label "Стать"
+    = f.select :sex, [["Самець", "male"], ["Самка", "female"]], include_blank: true
+    = f.label "Розмір"
+    = f.collection_select(:size, Animal.all, :id, :size, include_blank: true)
+    = f.label "Вік"
+    = f.collection_select(:age, Animal.all, :id, :age, include_blank: true)
+    = f.label "Стерилізація"
+    = f.collection_select(:sterile, Animal.all, :id, :sterile, include_blank: true)
+
+    = f.submit "Пошук", class: "btn btn-success"
+
+  / = f.label "Стерилізація"
+  / = f.predicate_select only: Proc.new{|k| ['eq'].include?(k) }
+
+  / = search_form_for @q, method: :post, :html => {:class => "form-horizontal"} do |f|
+  / = f.condition_fields do |c|
+  /   = render "condition_fields", f: c
+  / %p= link_to_add_fields "Додати фільтр", f, :condition
+  / .form-group
+  /   .row.col-md-4
+  /     Sort:
+  /     = f.sort_fields do |s|
+  /       = s.sort_select({}, :class => 'form-control row_spacer')
+  / .row
+  /   %button.btn.btn-success{:type => "submit"} Submit
+  /   = link_to "back", animals_path, class: "btn btn-danger"
+
+  / :url => search_animals_path, :html => {:method => :post} 

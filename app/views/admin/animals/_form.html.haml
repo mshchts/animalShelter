@@ -1,10 +1,4 @@
-= form_for @animal, html: {class: 'form-horizontal'} do |f|
-  - if @animal.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@animal.errors.count, "error")} prohibited this animal from being saved:"
-      %ul
-        - @animal.errors.full_messages.each do |msg|
-          %li= msg
+= form_for [:admin, @animal], html: {class: 'form-horizontal', :multipart => true } do |f|
 
   .form-group
     = f.label "Порода*", class: "col-lg-2 control-label"
@@ -17,23 +11,26 @@
   .form-group
     = f.label "Стать", class: "col-lg-2 control-label"
     .col-lg-5
-      = f.select :sex, [['Будь-яка', "any"],['Самець', "male"],['Самка','female']], {:selected=> 'any'}, class: "col-lg-5 form-control"
+      = f.select :sex, [['Будь-яка', "Будь-яка"],['Самець', 'Самець'],['Самка','Самка']], {:selected=> 'any'}, class: "col-lg-5 form-control"
   .form-group
     = f.label "Вік", class: "col-lg-2 control-label"
     .col-lg-5
-      = f.select :age, [['Будь-який', "any"],['Малюк','baby'],['Молодий', 'young'],['Дорослий','adult'],['Стара','old']], {:selected=> 'any'}, class: "col-lg-5 form-control"
+      = f.select :age, [['Будь-який', 'Будь-який'],['Малюк(0-2 роки)','Малюк(0-2 роки)'],['Молодий (2-5 роки)', 'Молодий (2-5 роки)'],['Дорослий (5-9 років)','Дорослий (5-9 років)'],['Старий (>10)','Старий (>10)']], {:selected=> 'any'}, class: "col-lg-5 form-control"
   .form-group
     = f.label "Розмір", class: "col-lg-2 control-label"
     .col-lg-5
-      = f.select :size, [['Будь-який', 'any'],['Малий', 'small'],['Середній','medium'],['Великий','big']], {:selected=> 'any'}, class: "col-lg-5 form-control"
+      = f.select :size, [['Будь-який', 'Будь-який'],['Малий (<10 кг)', 'Малий (<10 кг)'],['Середній (10-25 кг)','Середній (10-25 кг)'],['Великий (> 25 кг)','Великий (> 25 кг)']], {:selected=> 'any'}, class: "col-lg-5 form-control"
   .form-group
     = f.label "Стерилізація", class: "col-lg-2 col-md-1 col-sm-1 col-xs-1 control-label"
-    .col-lg-5.col-md-5.col-sm-5.col-xs-5
-      = f.check_box :sterile
+    .col-lg-5
+      = f.select :sterile, [['Так', 'Так'],['Ні','Ні']], include_blank: true, class: "col-lg-5 form-control"
   .form-group
     = f.label "Опис", class: "col-lg-2 control-label"
     .col-lg-5
       = f.text_area :description, class: "form-control", :rows => "3"
+  .form-group
+    = f.label "Додати фото", class: "col-lg-2 control-label"
+    = f.file_field :photo, class: "col-lg-5"
   .actions
   .form-group
     .col-lg-5.col-lg-offset-2

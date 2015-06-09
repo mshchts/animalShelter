@@ -1,20 +1,21 @@
-%h2 Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .col-xs-4
-    .input-group.input-group-addon
-      .glyphicon.glyphicon-user
-      = f.label :email
-      = f.email_field :email, autofocus: true, class: "form-control"
-    .input-group-addon
-      .glyphicon.glyphicon-lock
-      = f.label :password
-      = f.password_field :password, autocomplete: "off", class: "form-control"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_
-      = f.label :remember_me
-  .btn.actions
-    = f.submit "Log in", class: "btn-primary form-control"
+.container
+  %h2 Логування
+  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    .col-xs-6
+      .input-group.input-group-addon
+        .glyphicon.glyphicon-user
+        = f.label :email
+        = f.email_field :email, autofocus: true, class: "form-control"
+      .input-group-addon
+        .glyphicon.glyphicon-lock
+        = f.label :password
+        = f.password_field :password, autocomplete: "off", class: "form-control"
+    - if devise_mapping.rememberable?
+      .field
+        = f.check_box :remember_
+        = f.label :remember_me
+    .btn.actions
+      = f.submit "Увійти", class: "btn-primary form-control"
 
 = notice
 = alert

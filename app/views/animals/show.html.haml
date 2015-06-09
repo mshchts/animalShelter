@@ -1,28 +1,30 @@
 %p#notice= notice
 .container
-  .col-sm-6.col-md-4.col-lg-3.clearfix.visible-sm-block
-  %p
-    %b Порода:
-    = @animal.animal_type
-  %p
-    %b Ім'я:
-    = @animal.name
-  %p
-    %b Стать:
-    = @animal.sex
-  %p
-    %b Розмір:
-    = @animal.size
-  %p
-    %b Вік:
-    = @animal.age
-  %p
-    %b Стерилізація:
-    = @animal.sterile
-  %p
-    %b Опис:
-    = @animal.description
+  .row
+    .col-sm-6.col-md-4.col-lg-4.clearfix.visible-sm-block
+    %p
+      %b Порода:
+      = @animal.animal_type
+    %p
+      %b Ім'я:
+      = @animal.name
+    %p
+      %b Стать:
+      = @animal.sex
+    %p
+      %b Розмір:
+      = @animal.size
+    %p
+      %b Вік:
+      = @animal.age
+    %p
+      %b Стерилізація:
+      = @animal.sterile
+    %p
+      %b Опис:
+      = @animal.description
+    .col-sm-6.col-md-4.col-lg-4
+      = image_tag @animal.photo.url(:medium)
+    / = link_to( image_tag( animal.photo.url(:thumb), class: 'photo', alt: animal.name ), animal )
 
-  = link_to 'Редагувати', edit_animal_path(@animal)
-  \|
-  = link_to 'Назад', animals_path
+  = link_to 'Назад', animals_path, class: "btn btn-xs btn-primary"

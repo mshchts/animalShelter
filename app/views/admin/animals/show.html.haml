@@ -23,6 +23,10 @@
     %b Опис:
     = @animal.description
 
+  .col-md-4
+    = image_tag @animal.photo.url(:medium)
+    = image_tag @animal.photo.url(:thumb)
+    
   = link_to 'Редагувати', edit_animal_path(@animal)
   \|
   = link_to 'Назад', animals_path

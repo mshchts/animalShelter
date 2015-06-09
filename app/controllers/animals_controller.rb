@@ -4,7 +4,13 @@ class AnimalsController < ApplicationController
   # GET /animals
   # GET /animals.json
   def index
-    @animals = Animal.all
+    @q = Animal.ransack(params[:q])
+    @animals = @q.result(distinct: true)
+  end
+
+  def search
+    index
+    render :index
   end
 
   # GET /animals/1
@@ -25,7 +31,6 @@ class AnimalsController < ApplicationController
   # POST /animals.json
   def create
     @animal = Animal.new(animal_params)
-
     respond_to do |format|
       if @animal.save
         format.html { redirect_to @animal, notice: 'Animal was successfully created.' }

@@ -1,15 +1,27 @@
 source 'https://rubygems.org'
 
 gem 'railroady'
-gem 'paperclip', '~> 4.2'
+gem 'paperclip-dropbox', '>= 1.1.7'
+gem 'paperclip', :git => "git://github.com/thoughtbot/paperclip.git"
+gem 'ransack', github: 'activerecord-hackery/ransack'
+gem "rails_12factor", group: :production
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
+
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+group :development, :test do
+  gem 'sqlite3'
+end
+
+group :production, :staging do
+  gem "pg"
+end
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.7.14'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -49,6 +61,9 @@ group :development, :test do
   gem 'factory_girl_rails', '~> 4.0'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'cucumber-rails', :require => false
+  # database_cleaner is not required, but highly recommended
+  gem 'database_cleaner'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'

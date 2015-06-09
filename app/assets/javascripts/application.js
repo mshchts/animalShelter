@@ -14,5 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-//= require bootstrap
+//= require moment
+//= require bootstrap-sprockets
+//= require bootstrap-datetimepicker
 //= require jquery.dataTables.min.js

@@ -8,6 +8,7 @@ class CreateAnimals < ActiveRecord::Migration
       t.string :age
       t.string :sterile
       t.string :description
+      t.attachment :photo
 
       t.timestamps null: false
     end

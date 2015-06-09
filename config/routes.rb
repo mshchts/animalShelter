@@ -8,14 +8,27 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root 'home#index'
-    resources :news
+    resources :news do
+      member do
+        get '/news', to: '/news#index'
+        get '/news/:id', to: 'news#show'
+      end
+    end
+    resources :animals do
+      collection do
+        match 'search' => 'animals#search', via: [:get, :post], as: :search
+      end
+    end
     resources :home
-    resources :animals
-    resources :contacts
   end
 
   resources :news
-  resources :animals
+  
+  resources :animals do
+   collection do
+      match 'search' => 'animals#search', via: [:get, :post], as: :search
+    end
+  end
 
   # You can have the root of your site routed with "root"
 
@@ -71,7 +84,9 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
     get '/', to: 'home#index', as: 'home'
+
     get 'admin' => 'admin#home'
+
     get '/contacts', to: 'contacts#index', as: 'contacts'
 
     get '/animals' => 'animals#index', as: 'all_animals'

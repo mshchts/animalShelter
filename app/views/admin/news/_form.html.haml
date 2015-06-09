@@ -1,0 +1,23 @@
+= form_for [:admin, @news], html: {class: 'form-horizontal'} do |f|
+
+  .form-group
+    = f.label 'Заголовок', class: "col-lg-2 control-label"
+    .col-lg-5.input-group
+      = f.text_field :title, class: "col-lg-5 form-control"
+  .form-group
+    = f.label 'Дата', class: "col-lg-2 control-label"
+    .col-lg-5.input-group
+      = f.text_field :date, placeholder: @news.date, class: "form-control datetimepicker"
+      %span.input-group-addon.glyphicon.glyphicon-calendar
+  .form-group
+    = f.label 'Текст', class: "col-lg-2 control-label"
+    .col-lg-5.input-group
+      = f.text_area :text, :rows => "3", class: "col-lg-5 form-control"
+  .form-group
+    = f.label "Додати фото", class: "col-lg-2 control-label"
+    = f.file_field :photo, class: "col-lg-5"
+  .actions
+    .form-group
+      .col-lg-10.col-lg-offset-2
+        %button.btn.btn-default{:type => "reset"} Стерти
+        = f.submit 'Зберегти', class: "btn btn-primary"

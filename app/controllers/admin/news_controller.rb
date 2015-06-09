@@ -9,14 +9,8 @@ class Admin::NewsController < Admin::ApplicationController
     @news = News.all
   end
 
-  # GET /news/1
-  # GET /news/1.json
-  def show
-  end
-
   # GET /news/new
   def new
-    authorize! :create, News
     @news = News.new
   end
 
@@ -24,13 +18,21 @@ class Admin::NewsController < Admin::ApplicationController
   def edit
   end
 
+  # Use strong_parameters for attribute whitelisting
+  # Be sure to update your create() and update() controller methods.
+
+  def user_params
+    params.require(:news).permit(:photo)
+  end
+
   # POST /news
   # POST /news.json
   def create
     @news = News.new(news_params)
+
     respond_to do |format|
       if @news.save
-        format.html { redirect_to controller: 'admin/news', aciton: 'index', conf_id: @news.conference }
+        format.html { redirect_to @news, notice: 'Animal was successfully created.' }
         format.json { render :show, status: :created, location: @news }
       else
         format.html { render :new }
@@ -44,7 +46,7 @@ class Admin::NewsController < Admin::ApplicationController
   def update
     respond_to do |format|
       if @news.update(news_params)
-        format.html { redirect_to controller: 'admin/news', aciton: 'index', conf_id: @news.conference }
+        format.html { redirect_to @news, notice: 'News were successfully updated.' }
         format.json { render :show, status: :ok, location: @news }
       else
         format.html { render :edit }
@@ -71,6 +73,6 @@ class Admin::NewsController < Admin::ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def news_params
-      params.require(:news).permit(:title, :content, :conference_id)
+      params.require(:news).permit(:title, :text, :date, :photo)
     end
 end

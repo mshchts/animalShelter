@@ -12,20 +12,11 @@
         %span.icon-bar
         %span.icon-bar
       %ul.nav.navbar-nav
-        %li
-          = link_to " Притулок", home_path, class: "glyphicon-home"
-        %li.active
-          = link_to " Новини", all_news_path, class: "glyphicon-envelope"
+        %li= link_to " Притулок", home_path, class: "glyphicon-home"
+        %li.active= link_to " Новини", all_news_path, class: "glyphicon-envelope"
         %span.sr-only (current)
-        %li
-          = link_to " Волонтерство", all_animals_path, class: "glyphicon-user"
-        %li
-          = link_to "Тварини", all_animals_path
-        %li
-          = link_to "Контакти", contacts_path
-        %li
-          = link_to "Про нас", contacts_path
-    %form.navbar-form.navbar-right{:role => "search"}
-      .form-group
-        %input.form-control{:placeholder => "Search", :type => "text"}/
-        %button.btn.btn-default{:type => "submit"} Пошук
+        / %li= link_to " Волонтерство", all_animals_path, class: "glyphicon-user"
+        %li= link_to "Тварини", all_animals_path
+      %ul.nav.navbar-nav.navbar-right
+        %li= link_to "Контакти", contacts_path
+        / %li= link_to "Про нас", contacts_path
