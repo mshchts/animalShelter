@@ -11,19 +11,20 @@
   .form-group
     = f.label "Стать", class: "col-lg-2 control-label"
     .col-lg-5
-      = f.select :sex, [['Будь-яка', "Будь-яка"],['Самець', 'Самець'],['Самка','Самка']], {:selected=> 'any'}, class: "col-lg-5 form-control"
+      = f.select :sex, [['', ""],['Самець', 'Самець'],['Самка','Самка']], {:selected=> ''}, class: "col-lg-5 form-control"
   .form-group
     = f.label "Вік", class: "col-lg-2 control-label"
     .col-lg-5
-      = f.select :age, [['Будь-який', 'Будь-який'],['Малюк(0-2 роки)','Малюк(0-2 роки)'],['Молодий (2-5 роки)', 'Молодий (2-5 роки)'],['Дорослий (5-9 років)','Дорослий (5-9 років)'],['Старий (>10)','Старий (>10)']], {:selected=> 'any'}, class: "col-lg-5 form-control"
+      = f.select :age, [['', ''],['Малюк(<1 роки)','Малюк(<1 роки)'],['Молодий (1-3 роки)', 'Молодий (1-3 роки)'],['Дорослий (>3 років)','Дорослий (>3 років)'], {:selected=> ''}, class: "col-lg-5 form-control"
   .form-group
     = f.label "Розмір", class: "col-lg-2 control-label"
     .col-lg-5
-      = f.select :size, [['Будь-який', 'Будь-який'],['Малий (<10 кг)', 'Малий (<10 кг)'],['Середній (10-25 кг)','Середній (10-25 кг)'],['Великий (> 25 кг)','Великий (> 25 кг)']], {:selected=> 'any'}, class: "col-lg-5 form-control"
+      = f.select :size, [['', ''],['Малий (<10 кг)', 'Малий (<10 кг)'],['Середній (10-25 кг)','Середній (10-25 кг)'],['Великий (> 25 кг)','Великий (> 25 кг)']], {:selected=> ''}, class: "col-lg-5 form-control"
   .form-group
     = f.label "Стерилізація", class: "col-lg-2 col-md-1 col-sm-1 col-xs-1 control-label"
     .col-lg-5
-      = f.select :sterile, [['Так', 'Так'],['Ні','Ні']], include_blank: true, class: "col-lg-5 form-control"
+      = f.select :sterile, [['', ''],['Так', 'Так'],['Ні','Ні']], {:selected=> ''}, class: "col-lg-5 form-control"
+      / = f.select :sterile, options_from_collection_for_select(Animal.all, 'id', 'sterile', @animal.sterile), class: "col-lg-5 form-control"
   .form-group
     = f.label "Опис", class: "col-lg-2 control-label"
     .col-lg-5

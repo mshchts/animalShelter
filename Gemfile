@@ -3,7 +3,8 @@ source 'https://rubygems.org'
 gem 'railroady'
 gem 'paperclip-dropbox', '>= 1.1.7'
 gem 'paperclip', :git => "git://github.com/thoughtbot/paperclip.git"
-gem 'ransack', github: 'activerecord-hackery/ransack'
+gem 'ransack'
+# , github: 'activerecord-hackery/ransack'
 gem "rails_12factor", group: :production
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'

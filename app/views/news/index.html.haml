@@ -7,90 +7,66 @@
   .neighborhood-guides
     %h1 Новини
 
-    %table.table.table-striped.table-hover
+    %table.table.table-striped.table-hover.data_table
       %thead
         %tr
+          %th ID
           %th Заголовок
           %th Дата
           %th Опис
-          %th{:colspan => 2}
+          %th.unvisible
+          %th.unvisible
           
       %tbody
         - @news.each do |news|
           %tr
+            %td= news.id
             %td= news.title
             %td= news.date
             %td= news.text
-            %td= image_tag (news.photo.url(:thumb)) unless news.photo.nil?
+            %td= image_tag (news.photo.url(:thumb))
             %td= link_to 'Показати', news, class: "btn btn-xs btn-primary"
 
-    .row
-      .col-sm-4.col-md-4
-        .thumbnail
-          %img{:src => "http://4.bp.blogspot.com/_xVtD6O5U0s0/TFlzwBZosnI/AAAAAAAAArw/8SNiu30yIjo/s1600/DELTA+sanctuary.gif"}/
-          .caption
-          %h3 Вівчарка
-          %p Інформація по викиненій з машини кавказькій вівчарці. Собака прооперована на ЛКП "Лев" за гроші Західно-українського товариства захисту тварин.
-          %p
-            %a= link_to 'Читати далі', animals_path
-      .col-sm-4.col-md-4
-        .thumbnail
-          %img{:src => "http://theplanetd.com/images/animal-rescue-10.jpg"}/
-          .caption
-          %h3 Нові домівки у притулку
-          %p Привезено нові деревяні буди для тварин
-          %p
-            %a= link_to 'Читати далі', animals_path 
-      .row
-      .col-sm-4.col-md-4.col-lg-3
-        .thumbnail
-          %img.image-size{:src => "http://www.savingpets.com.au/wp-content/uploads/Kitten_cage.jpg"}/
-          .caption
-          %h3 Нові домівки у притулку
-          %p Привезено нові деревяні буди для тварин
-          %p
-            %a= link_to 'Читати далі', animals_path
-      .col-sm-4.col-md-4.col-lg-3
-        .thumbnail
-          %img.image-size{:src => "http://media.lehighvalleylive.com/today_impact/photo/shelter-cats-ac620b2a67cf9c10.jpg"}/
-          .caption
-          %h3 Нові дітки притулку
-          %p Привезено нові деревяні буди для тварин
-          %p
-            %a= link_to 'Читати далі', animals_path
-      .col-sm-4.col-md-4.col-lg-3
-        .thumbnail
-          %img.image-size{:src => "https://images.indiegogo.com/file_attachments/708657/files/20140710125755-IMG_1361-kitty-condo.jpg?1405022275"}/
-          .caption
-          %h3 Нові домівки у притулку
-          %p Привезено нові деревяні буди для тварин
-          %p
-            %a= link_to 'Читати далі', animals_path 
+  /   .row
+  /     .col-sm-4.col-md-4
+  /       .thumbnail
+  /         %img{:src => "http://4.bp.blogspot.com/_xVtD6O5U0s0/TFlzwBZosnI/AAAAAAAAArw/8SNiu30yIjo/s1600/DELTA+sanctuary.gif"}/
+  /         .caption
+  /         %h3 Вівчарка
+  /         %p Інформація по викиненій з машини кавказькій вівчарці. Собака прооперована на ЛКП "Лев" за гроші Західно-українського товариства захисту тварин.
+  /         %p
+  /           %a= link_to 'Читати далі', animals_path
+  /     .col-sm-4.col-md-4
+  /       .thumbnail
+  /         %img{:src => "http://theplanetd.com/images/animal-rescue-10.jpg"}/
+  /         .caption
+  /         %h3 Нові домівки у притулку
+  /         %p Привезено нові деревяні буди для тварин
+  /         %p
+  /           %a= link_to 'Читати далі', animals_path 
+  /     .row
+  /     .col-sm-4.col-md-4.col-lg-3
+  /       .thumbnail
+  /         %img.image-size{:src => "http://www.savingpets.com.au/wp-content/uploads/Kitten_cage.jpg"}/
+  /         .caption
+  /         %h3 Нові домівки у притулку
+  /         %p Привезено нові деревяні буди для тварин
+  /         %p
+  /           %a= link_to 'Читати далі', animals_path
+  /     .col-sm-4.col-md-4.col-lg-3
+  /       .thumbnail
+  /         %img.image-size{:src => "http://media.lehighvalleylive.com/today_impact/photo/shelter-cats-ac620b2a67cf9c10.jpg"}/
+  /         .caption
+  /         %h3 Нові дітки притулку
+  /         %p Привезено нові деревяні буди для тварин
+  /         %p
+  /           %a= link_to 'Читати далі', animals_path
+  /     .col-sm-4.col-md-4.col-lg-3
+  /       .thumbnail
+  /         %img.image-size{:src => "https://images.indiegogo.com/file_attachments/708657/files/20140710125755-IMG_1361-kitty-condo.jpg?1405022275"}/
+  /         .caption
+  /         %h3 Нові домівки у притулку
+  /         %p Привезено нові деревяні буди для тварин
+  /         %p
+  /           %a= link_to 'Читати далі', animals_path 
 
-  .learn-more
-    .container
-      .row
-        .col-md-4
-          %h3 КУПИТИ ЇЖІ
-          %p Багато їжі.
-          %p
-            %a= link_to 'Подивитись', animals_path
-        .col-md-4
-          %h3 Стерилізація
-          %p Стерильні тварини.
-          %p
-            %a= link_to 'Подивитись', animals_path
-        .col-md-4
-          %h3 БЕЗПЕКА
-          %p Дбаємо про безпеки тварин разом.
-          %p
-            %a= link_to 'Подивитись', animals_path
-
-
-        .media
-          .media-left.media-middle
-            %a{:href => "#"}
-              %img.media-object{:alt => "...", :src => "..."}/
-          .media-body
-            %h4.media-heading Middle aligned media
-            \...

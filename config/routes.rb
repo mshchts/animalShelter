@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    root 'home#index'
+    root 'news#index'
     resources :news do
       member do
         get '/news', to: '/news#index'
@@ -23,10 +23,10 @@ Rails.application.routes.draw do
   end
 
   resources :news
-  
+
   resources :animals do
-   collection do
-      match 'search' => 'animals#search', via: [:get, :post], as: :search
+    collection do
+      match 'search' => 'animals#search', via: [:post], as: :search
     end
   end
 

@@ -5,15 +5,20 @@ class Admin::AnimalsController < ApplicationController
   
   # GET /animals
   # GET /animals.json
+
   def index
-    @q = Animal.ransack(params[:q])
-    @animals = @q.result(distinct: true)
+    @animals = Animal.all
   end
 
-  def search
-    index
-    render :index
-  end
+  # def index
+  #   @q = Animal.ransack(params[:q])
+  #   @animals = @q.result(distinct: true)
+  # end
+
+  # def search
+  #   index
+  #   render :index
+  # end
 
   # GET /animals/1
   # GET /animals/1.json

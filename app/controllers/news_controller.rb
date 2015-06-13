@@ -6,17 +6,17 @@ class NewsController < ApplicationController
     @news = News.all
   end
 
-  def seenews
-    @news1 = News.find(params[:id])
-    if @news.seenews(news_params)
-      redirect_to(@news)
-    else
-      render "news1"
-    end
-  end
+  # def seenews
+  #   @news1 = News.find(params[:id])
+  #   if @news.seenews(news_params)
+  #     redirect_to(@news)
+  #   else
+  #     render "news1"
+  #   end
+  # end
 
-  def edit
-  end
+  # def edit
+  # end
   
   # GET /news/1
   # GET /news/1.json
@@ -31,6 +31,6 @@ class NewsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def news_params
-      params.require(:news).permit(:title, :text, :date, :photo)
+      params.require(:news).permit(:id, :title, :text, :date, :photo)
     end
 end

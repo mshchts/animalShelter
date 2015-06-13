@@ -16,6 +16,6 @@
       = succeed "." do
         %strong
           = current_admin.username
-      = link_to "Адмін. частина", admin_animals_path
+      = link_to "Адмін. частина", admin_path
       |
       = link_to "Вийти", destroy_admin_session_path, method: :delete

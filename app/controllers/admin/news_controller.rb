@@ -14,6 +14,9 @@ class Admin::NewsController < Admin::ApplicationController
     @news = News.new
   end
 
+  def show
+  end
+
   # GET /news/1/edit
   def edit
   end
@@ -73,6 +76,6 @@ class Admin::NewsController < Admin::ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def news_params
-      params.require(:news).permit(:title, :text, :date, :photo)
+      params.require(:news).permit(:id, :title, :text, :date, :photo)
     end
 end

@@ -1,20 +1,25 @@
 .container
   %h1 Новини
   = link_to 'Додати новину', new_admin_news_path
-  %table.table.table-striped.table-hover
+  %table.table.table-striped.table-hover.data_table
     %thead
       %tr
+        %th ID
         %th Заголовок
         %th Дата
         %th Опис
-        %th{:colspan => 4}
+        %th.unvisible
+        %th.unvisible
+        %th.unvisible
+        %th.unvisible
     %tbody
       - @news.each do |news|
         %tr
+          %td= news.id
           %td= news.title
           %td= news.date
           %td= news.text
           %td= image_tag (news.photo.url(:thumb)) unless news.photo.nil?
           %td.btn= link_to 'Показати', news, class: "btn btn-xs btn-primary"
-          %td.btn= link_to 'Редагувати', edit_admin_news_path(news), class: "btn btn-xs btn-primary"
-          %td.btn= link_to 'Видалити', news, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-xs btn-primary"
+          %td.btn= link_to 'Редагувати', edit_admin_news_path(news), class: "btn btn-xs btn-warning"
+          %td.btn= link_to 'Видалити', news, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-xs btn-danger"

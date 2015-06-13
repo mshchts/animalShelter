@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20150602145117) do
   add_index "admins", ["username"], name: "index_admins_on_username", unique: true
 
   create_table "animals", force: :cascade do |t|
+    t.integer  "id"
     t.string   "animal_type"
     t.string   "name"
     t.string   "sex"
@@ -55,6 +56,7 @@ ActiveRecord::Schema.define(version: 20150602145117) do
   end
 
   create_table "news", force: :cascade do |t|
+    t.integer  "id"
     t.string   "title"
     t.string   "text"
     t.date     "date"

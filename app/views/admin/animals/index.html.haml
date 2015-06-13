@@ -1,25 +1,26 @@
 .container
   %h2 Огляд тварин
-  = render "layouts/search_box"
-  = link_to 'Додати тварину', new_admin_animal_path
+  / = render "layouts/search_box"
 
-  %table#animals.data_table.cell-border
+  %table#animals.data_table.cell-border.table.table-striped.table-hover
     %thead
       %tr
-        %th= sort_link(@q, :name, "Ім'я")
-        %th= sort_link(@q, :animal_type, "Порода")
-        %th= sort_link(@q, :sex, "Стать")
-        %th= sort_link(@q, :size, "Розмір")
-        %th= sort_link(@q, :age, "Вік")
-        %th= sort_link(@q, :sterile, "Стерилізація")
+        %th ID
+        %th Ім'я
+        %th Порода
+        %th Стать
+        %th Розмір
+        %th Вік
+        %th Стерилізація
         %th Опис
-        %th Фото
-        %th
-        %th
-        %th
+        %th.unvisible
+        %th.unvisible
+        %th.unvisible
+        %th.unvisible
     %tbody
       - @animals.each do |animal|
         %tr
+          %td= animal.id
           %td= link_to(animal.name, animal)
           %td= animal.animal_type
           %td= animal.sex
@@ -32,6 +33,7 @@
           %td= link_to 'Редагувати', edit_admin_animal_path(animal), class: "btn btn-xs btn-warning"
           %td= link_to 'Видалити', animal, :method => :delete, :data => { :confirm => 'Ви впевнені?' }, class: "btn btn-xs btn-danger"
 
+  = link_to 'Додати тварину', new_admin_animal_path
 
   / = search_form_for @q, url: search_admin_animals_path,
   /                       html: { method: :post } do |f|

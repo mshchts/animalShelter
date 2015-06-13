@@ -1,56 +1,66 @@
 .container
   %h2 Огляд тварин
-  = render "layouts/search_box"
+  / = render "layouts/search_box"
+  .panel.panel-default.col-lg-11
+    = label :animal_type, "Вид"
+    %select#animal-type-select{ :animal_type => "Вид"}
+      %option{:value => ""}= "Байдуже" 
+      %option{:value => "Кіт"}= "Кіт"
+      %option{:value => "Собака"}= "Собака"  
 
-  %table#animals.cell-border.table.table-striped.table-hover
+    = label :sex, "Стать"
+    %select#sex-select{ :sex => "Cтать"}
+      %option{:value => ""}= "Байдуже" 
+      %option{:value => "Самець"}= "Самець"
+      %option{:value => "Самка"}= "Самка"      
+
+    = label :age, "Вік"
+    %select#age-select{ :age => "Вік"}
+      %option{:value => ""}= "Байдуже" 
+      %option{:value => "Малюк(<1 роки)"}= "Малюк(<1 роки)"
+      %option{:value => "Молодий (1-3 роки)"}= "Молодий (1-3 роки)"      
+      %option{:value => "Дорослий (>3 років)"}= "Дорослий (>3 років)"
+
+    = label :size, "Розмір"
+    %select#size-select{ :size => "Розмір"}
+      %option{:value => ""}= "Байдуже" 
+      %option{:value => "Малий (<10 кг)"}= "Малий (<10 кг)"
+      %option{:value => "Середній (10-25 кг)"}= "Середній (10-25 кг)"      
+      %option{:value => "Великий (> 25 кг)"}= "Великий (> 25 кг)"      
+
+    = label :sterile, "Стерилізація"
+    %select#sterile-select{ :sterile => "Стерилізація"}
+      %option{:value => ""}= "Байдуже" 
+      %option{:value => "Так"}= "Так"
+      %option{:value => "Ні"}= "Ні"      
+
+    / = f.submit "Пошук", class: "btn btn-default action search-button"
+    %button.btn.btn-default.search-button.right Пошук
+
+  / .data_table
+  %table#animals.table.cell-border.table-striped.table-hover
     %thead
       %tr
-        %th= sort_link(@q, :name, "Ім'я")
-        %th= sort_link(@q, :animal_type, "Порода")
-        %th= sort_link(@q, :sex, "Стать")
-        %th= sort_link(@q, :size, "Розмір")
-        %th= sort_link(@q, :age, "Вік")
-        %th= sort_link(@q, :sterile, "Стерилізація")
+        / %th ID
+        %th Ім'я
+        %th Вид
+        %th Стать
+        %th Розмір
+        %th Вік
+        %th Стерилізація
         %th Опис
-        %th
-        %th
+        %th.unvisible
+        %th.unvisible
     %tbody
       - @animals.each do |animal|
-        %tr
+        %tr.animal
+          / %td= animal.id
           %td= link_to(animal.name, animal)
-          %td= animal.animal_type
-          %td= animal.sex
-          %td= animal.size
-          %td= animal.age
-          %td= animal.sterile
+          %td.animal-type= animal.animal_type
+          %td.sex= animal.sex
+          %td.size= animal.size
+          %td.age= animal.age
+          %td.sterile= animal.sterile
           %td= animal.description
           %td= image_tag (animal.photo.url(:thumb)) unless animal.photo.nil?
           %td= link_to 'Показати', animal, class: "btn btn-xs btn-primary"
-
-  .col-md-4
-    .thumbnail
-      / = image_tag(@news.image_url, :size => "260x180")
-      = image_tag("http://davisenterprise.s3.amazonaws.com/files/2011/06/Cats2W.jpg", size: "350")
-      %h3 Кіт
-      %p Поглянь який чудовий котик чекає на свого господаря.
-      %p
-        %a{:href => "#"} Читати далі 
-    .thumbnail
-      = image_tag("https://cbsnewyork.files.wordpress.com/2012/03/71524176.jpg?w=620&h=349&crop=1", size: "350")
-      %h3 Кіт
-      %p Поглянь, який чудовий котик чекає на свого господаря.
-      %p
-        %a{:href => "#"} Читати далі
-  .col-md-4
-    .thumbnail
-      = image_tag("http://www.heardcitizen.com/wp-content/uploads/2012/10/ul_animal_shelter_cat+Z.jpg", size: "350")
-      %h3 Кіт
-      %p Поглянь який чудовий котик чекає на свого господаря.
-      %p
-        %a{:href => "#"} Читати далі
-    .thumbnail
-      = image_tag("http://www.examiner.com/images/blog/EXID15696/images/North-Royalton-Ohio-Cat-Shelter-Stay-A-While.jpg", size: "350")
-      %h3 Кіт
-      %p Поглянь який чудовий котик чекає на свого господаря.
-      %p
-        %a{:href => "#"} Читати далі

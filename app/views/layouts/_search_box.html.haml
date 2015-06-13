@@ -1,20 +1,18 @@
-.container
-  = search_form_for @q, :url => search_animals_path, :html => {:method => :post} do |f|
-    .field
-    = f.label "Ім\'я"
-    = f.search_field :name
+.container.panel.panel-default.col-md-11
+  = search_form_for @q, url: search_animals_path, html: { method: :post } do |f|
     = f.label "Порода"
     = f.collection_select(:animal_type, Animal.all, :id, :animal_type, include_blank: true)
     = f.label "Стать"
-    = f.select :sex, [["Самець", "male"], ["Самка", "female"]], include_blank: true
+    = f.select :sex, [['Самець', 'Самець'],['Самка','Самка']], include_blank: true
     = f.label "Розмір"
-    = f.collection_select(:size, Animal.all, :id, :size, include_blank: true)
+    = f.select :size, [['Малий (<10 кг)', 'Малий (<10 кг)'],['Середній (10-25 кг)','Середній (10-25 кг)'],['Великий (> 25 кг)','Великий (> 25 кг)']], include_blank: true
     = f.label "Вік"
-    = f.collection_select(:age, Animal.all, :id, :age, include_blank: true)
+    = f.select :age, [['Малюк(0-2 роки)','Малюк(0-2 роки)'],['Молодий (2-5 роки)', 'Молодий (2-5 роки)'],['Дорослий (5-9 років)','Дорослий (5-9 років)'],['Старий (>10)','Старий (>10)']], include_blank: true
     = f.label "Стерилізація"
+    = f.select :sterile, [['Так', 'Так'],['Ні','Ні']], include_blank: true
     = f.collection_select(:sterile, Animal.all, :id, :sterile, include_blank: true)
 
-    = f.submit "Пошук", class: "btn btn-success"
+    = f.submit "Пошук", class: "btn btn-default action"
 
   / = f.label "Стерилізація"
   / = f.predicate_select only: Proc.new{|k| ['eq'].include?(k) }
@@ -33,3 +31,7 @@
   /   = link_to "back", animals_path, class: "btn btn-danger"
 
   / :url => search_animals_path, :html => {:method => :post} 
+  / = f.collection_select(:sterile, Animal.all, :id, :sterile, include_blank: true)
+
+
+  / = f.select(:sex, Animal.all.map {|p| [p.sex,p.id]}, :prompt => "Select a sex")
